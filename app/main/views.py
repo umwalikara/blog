@@ -41,23 +41,23 @@ def new_blog():
 
     return render_template('new_blog.html', new_blog_form= form)
 
-# @main.route('/blog/<int:id>/update',methods = ['GET','POST'])
-# @login_required
-# def update_blog(id):
-#     blog=Blog.query.filter_by(id=id).first()
-#     if blog is None:
-#         abort(404)
-#     form=BlogForm()
-#     if form.validate_on_submit():
-#         blog.title=form.title.data
-#         blog.content=form.content.data
-#         # blog.author=form.author.data
-#         db.session.commit()
-#         flash('your post has been updated')
-#         return redirect(url_for('.index'))
+@main.route('/blog/<int:id>/update',methods = ['GET','POST'])
+@login_required
+def update_blog(id):
+    blog=Blog.query.filter_by(id=id).first()
+    if blog is None:
+        abort(404)
+    form=BlogForm()
+    if form.validate_on_submit():
+        blog.title=form.title.data
+        blog.content=form.content.data
+        # blog.author=form.author.data
+        db.session.commit()
+        flash('your post has been updated')
+        return redirect(url_for('.index'))
     
 
-#     return render_template('blog.html', form=form)
+    return render_template('blog.html', form=form)
 
 # @main.route('/blog/comments/new/<int:id>',methods = ['GET','POST'])
 # @login_required

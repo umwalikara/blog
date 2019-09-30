@@ -1,7 +1,7 @@
-# import json
-# import requests
-# from .models import Quotes
-# from config import Config
+import json
+import requests
+from .models import Quotes
+from config import Config
 
 # base_url = None
 

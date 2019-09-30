@@ -4,9 +4,9 @@ from wtforms.validators import Required,Email
 from ..models import User
 
 
-# class UpdateProfile(FlaskForm):
-#     bio = TextAreaField('Tell us about you.',validators = [Required()])
-#     submit = SubmitField('Submit')
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')
 
 # class CommentsForm(FlaskForm):
 #     comment = TextAreaField('Comment', validators=[Required()])

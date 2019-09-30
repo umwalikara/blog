@@ -11,18 +11,18 @@ import markdown2
 
 
 # Views
-# @main.route('/')
-# def index():
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
+@main.route('/')
+def index():
+    '''
+    View root page function that returns the index page and its data
+    '''
 
-#     title = 'Home - Welcome to The Blogging'
+    title = 'Home - Welcome to The Blogging'
 
-#     blog= Blog.query.all()
-#     quotes= get_quotes()  
+    blog= Blog.query.all()
+    quotes= get_quotes()  
 
-#     return render_template('index.html', title = title,quotes=quotes, blog= blog)
+    return render_template('index.html', title = title,quotes=quotes, blog= blog)
    
 
 # @main.route('/blog/new/', methods = ['GET','POST'])

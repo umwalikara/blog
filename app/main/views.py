@@ -103,34 +103,34 @@ def profile(uname):
 
     return render_template("profile/profile.html", user = user)
 
-# @main.route('/user/<uname>/update',methods = ['GET','POST'])
-# @login_required
-# def update_profile(uname):
-#     user = User.query.filter_by(username = uname).first()
-#     if user is None:
-#         abort(404)
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_profile(uname):
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
 
-#     form = UpdateProfile()
+    form = UpdateProfile()
 
-#     if form.validate_on_submit():
-#         user.bio = form.bio.data
+    if form.validate_on_submit():
+        user.bio = form.bio.data
 
-#         db.session.add(user)
-#         db.session.commit()
+        db.session.add(user)
+        db.session.commit()
 
-#         return redirect(url_for('.profile',uname=user.username))
+        return redirect(url_for('.profile',uname=user.username))
     
-#     return render_template('profile/update.html',form =form)
+    return render_template('profile/update.html',form =form)
 
-# @main.route('/index/<int:id>/delete', methods = ['GET','POST'])
-# @login_required
-# def delete(id):
-#    current_post = Blog.query.filter_by(id = id).first()
-#    if current_post.user != current_user:
-#        abort(404)
-#    db.session.delete(current_post)
-#    db.session.commit()
-#    return redirect(url_for('main.index'))
+@main.route('/index/<int:id>/delete', methods = ['GET','POST'])
+@login_required
+def delete(id):
+   current_post = Blog.query.filter_by(id = id).first()
+   if current_post.user != current_user:
+       abort(404)
+   db.session.delete(current_post)
+   db.session.commit()
+   return redirect(url_for('main.index'))
    
 # @main.route('/index/<int:id>/delete_comment', methods = ['GET','POST'])
 # @login_required

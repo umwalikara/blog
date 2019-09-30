@@ -132,22 +132,22 @@ def delete(id):
    db.session.commit()
    return redirect(url_for('main.index'))
    
-# @main.route('/index/<int:id>/delete_comment', methods = ['GET','POST'])
-# @login_required
-# def delete_comment(id):
-#    current_post = Comment.query.filter_by(id = id).first()
-#    if current_post.user != current_user:
-#        abort(404)
-#    db.session.delete(current_post)
-#    db.session.commit()
-#    return redirect(url_for('.index'))
-#    return render_template('comments.html',current_post = current_post)
+@main.route('/index/<int:id>/delete_comment', methods = ['GET','POST'])
+@login_required
+def delete_comment(id):
+   current_post = Comment.query.filter_by(id = id).first()
+   if current_post.user != current_user:
+       abort(404)
+   db.session.delete(current_post)
+   db.session.commit()
+   return redirect(url_for('.index'))
+   return render_template('comments.html',current_post = current_post)
 
-# @main.route('/test/<int:id>')  
-# def test(id):
-#     '''
-#     this is route for basic testing
-#     '''
-#     blog =blog.query.filter_by(id=1).first()
+@main.route('/test/<int:id>')  
+def test(id):
+    '''
+    this is route for basic testing
+    '''
+    blog =blog.query.filter_by(id=1).first()
 
-#     return render_template('test.html',Blog = Blog)
+    return render_template('test.html',Blog = Blog)

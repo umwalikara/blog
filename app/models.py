@@ -97,23 +97,6 @@ class Quotes:
     def __init__(self,author,quote):
         self.author = author
         self.quote = quote
-# class Category(db.Model):
-#     '''
-#     Function that defines different categories of pitches
-#     '''
-#     __tablename__ ='categories'
-
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     category_description = db.Column(db.String(255))
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-
-#     @classmethod
-#     def get_categories(cls):
-        
-#         categories = Category.query.all()
-#         return categories 
-
 
 @login_manager.user_loader
 def load_user(user_id):

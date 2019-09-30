@@ -69,34 +69,34 @@ class Blog(db.Model):
         return Blog.query.filter_by(blog_id= blo_id)
 
 
-# class Comment(db.Model):
+class Comment(db.Model):
 
-#     __tablename__ = 'comments'
+    __tablename__ = 'comments'
 
-#     id = db.Column(db.Integer,primary_key = True)
-#     comment= db.Column(db.String)
-#     blog_id = db.Column(db.Integer,db.ForeignKey('blog.id'))
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    id = db.Column(db.Integer,primary_key = True)
+    comment= db.Column(db.String)
+    blog_id = db.Column(db.Integer,db.ForeignKey('blog.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
   
 
-#     def save_comment(self):
-#         db.session.add(self)
-#         db.session.commit()
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
         
-#     @classmethod
-#     def clear_comments(cls):
-#         Comment.all_comments.clear()
+    @classmethod
+    def clear_comments(cls):
+        Comment.all_comments.clear()
 
-#     @classmethod
-#     def get_comments(cls,id):
-#         comments = Comment.query.filter_by(blog_id=id).all()
+    @classmethod
+    def get_comments(cls,id):
+        comments = Comment.query.filter_by(blog_id=id).all()
 
-#         return comments
+        return comments
 
-# class Quotes:
-#     def __init__(self,author,quote):
-#         self.author = author
-#         self.quote = quote
+class Quotes:
+    def __init__(self,author,quote):
+        self.author = author
+        self.quote = quote
 # class Category(db.Model):
 #     '''
 #     Function that defines different categories of pitches

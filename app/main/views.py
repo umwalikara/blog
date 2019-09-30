@@ -59,20 +59,20 @@ def update_blog(id):
 
     return render_template('blog.html', form=form)
 
-# @main.route('/blog/comments/new/<int:id>',methods = ['GET','POST'])
-# @login_required
-# def new_comment(id):
-#     form = CommentsForm()
-#     if form.validate_on_submit():
-#         comment=form.comment.data
-#         new_comment = Comment(user=current_user, comment = comment)
-#         new_comment.save_comment()
-#         return redirect(url_for('main.index'))
-#     comments = Comment.get_comments(id)
-#     print(comments)
-#     comm=Comment.query.filter_by(id = id)
+@main.route('/blog/comments/new/<int:id>',methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+    form = CommentsForm()
+    if form.validate_on_submit():
+        comment=form.comment.data
+        new_comment = Comment(user=current_user, comment = comment)
+        new_comment.save_comment()
+        return redirect(url_for('main.index'))
+    comments = Comment.get_comments(id)
+    print(comments)
+    comm=Comment.query.filter_by(id = id)
     
-#     return render_template('new_comment.html',comment_form=form,comm = comm)
+    return render_template('new_comment.html',comment_form=form,comm = comm)
 
 # @main.route('/view/comment/<int:id>')
 # def view_comments(id):

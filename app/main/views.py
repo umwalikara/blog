@@ -25,21 +25,21 @@ def index():
     return render_template('index.html', title = title,quotes=quotes, blog= blog)
    
 
-# @main.route('/blog/new/', methods = ['GET','POST'])
-# @login_required
-# def new_blog():
-#     '''
-#     Function that creates new blogs
-#     '''
-#     form = BlogForm()
-#     if form.validate_on_submit():
-#         blog = form.content.data
-#         new_blog= Blog(blog = blog)
+@main.route('/blog/new/', methods = ['GET','POST'])
+@login_required
+def new_blog():
+    '''
+    Function that creates new blogs
+    '''
+    form = BlogForm()
+    if form.validate_on_submit():
+        blog = form.content.data
+        new_blog= Blog(blog = blog)
 
-#         new_blog.save_blog()
-#         return redirect(url_for('main.index'))
+        new_blog.save_blog()
+        return redirect(url_for('main.index'))
 
-#     return render_template('new_blog.html', new_blog_form= form)
+    return render_template('new_blog.html', new_blog_form= form)
 
 # @main.route('/blog/<int:id>/update',methods = ['GET','POST'])
 # @login_required

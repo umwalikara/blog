@@ -42,31 +42,31 @@ class User(UserMixin, db.Model):
         return f'User {self.username}'
 
 
-# class Blog(db.Model):
+class Blog(db.Model):
     
-#     __tablename__ = 'blog'
+    __tablename__ = 'blog'
 
-#     id = db.Column(db.Integer,primary_key = True)
-#     blog = db.Column(db.String)
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-#     comments = db.relationship('Comment',backref = 'blog',lazy="dynamic")
+    id = db.Column(db.Integer,primary_key = True)
+    blog = db.Column(db.String)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref = 'blog',lazy="dynamic")
 
-#     def save_blog(self):
-#         '''
-#         Function that saves blogs
-#         '''
-#         db.session.add(self)
-#         db.session.commit()
+    def save_blog(self):
+        '''
+        Function that saves blogs
+        '''
+        db.session.add(self)
+        db.session.commit()
     
-#     @classmethod
-#     def get_all_blogs(cls):
+    @classmethod
+    def get_all_blogs(cls):
        
-#         return Blog.query.all()
+        return Blog.query.all()
 
-#     @classmethod
-#     def get_blogs_by_blog(cls,blo_id):
+    @classmethod
+    def get_blogs_by_blog(cls,blo_id):
         
-#         return Blog.query.filter_by(blog_id= blo_id)
+        return Blog.query.filter_by(blog_id= blo_id)
 
 
 # class Comment(db.Model):

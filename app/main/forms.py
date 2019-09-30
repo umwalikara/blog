@@ -1,7 +1,7 @@
-# from flask_wtf import FlaskForm
-# from wtforms import StringField,TextAreaField,SubmitField,ValidationError, SelectField, RadioField
-# from wtforms.validators import Required,Email
-# from ..models import User
+from flask_wtf import FlaskForm
+from wtforms import StringField,TextAreaField,SubmitField,ValidationError, SelectField, RadioField
+from wtforms.validators import Required,Email
+from ..models import User
 
 
 # class UpdateProfile(FlaskForm):

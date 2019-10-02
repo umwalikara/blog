@@ -10,15 +10,9 @@ class UpdateProfile(FlaskForm):
 
 class CommentsForm(FlaskForm):
     comment = TextAreaField('Comment', validators=[Required()])
-    # vote=RadioField('default field arguments', choices=[('1', 'UpVote'), ('1', 'DownVote')])
     submit = SubmitField('SUBMIT')   
 
 class BlogForm(FlaskForm):
-    # category_id = SelectField('Select Category', choices=[('1', 'Story'), ('2', 'interview'), ('3', 'promotion'),('4','products')])
     content = TextAreaField('YOUR BLOG')
     submit = SubmitField('Create Blog')
 
-
-# class UpdateBlogForm(FlaskForm):
-#     content = TextAreaField('YOUR BLOG')
-#     submit = SubmitField('Create Blog')

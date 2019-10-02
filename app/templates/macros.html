@@ -4,7 +4,6 @@
 <div class="panel style=" style="box-shadow: 3px 3px 3px 3px #a3a2a2; padding:10px; text-align:center;background: transparent;">
   <p>{{blog.blog}}</p>
   <br>
-  <!-- <button style=" font-size:13px;"><a href="{{url_for('main.new_comment',id=blog.id)}}">Add comment</a>&nbsp;&nbsp;|</button> -->
     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"><a href="{{url_for('main.new_comment',id=blog.id)}}"></span> Comment</a></button>
     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"><a href="{{url_for('main.delete',id=blog.id)}}"></span> Trash </a></button>
     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"><a href="{{url_for('main.update_blog',id=blog.id)}}"></span> Edit</a></button>
@@ -18,8 +17,6 @@
 <div class="panel" style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px; text-align:center;">
   <p>{{blog.comment}}</p>
   
-  <!-- <br>
-  <button style=" font-size:18px;">Add a Comment&nbsp;&nbsp;</button> -->
 </div>
 {% endfor %}
 

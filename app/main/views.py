@@ -44,18 +44,18 @@ def new_blog():
 @main.route('/blog/<int:id>/update',methods = ['GET','POST'])
 @login_required
 def update_blog(id):
-    blog=Blog.query.filter_by(id=id).first()
+    blog=Blog.query.get(id)
+    print(blog.blog)
     if blog is None:
         abort(404)
     form=BlogForm()
     if form.validate_on_submit():
-        blog.title=form.title.data
-        blog.content=form.content.data
-        # blog.author=form.author.data
+        blog.blog=form.content.data
+        db.session.add(blog)
         db.session.commit()
-        flash('your post has been updated')
         return redirect(url_for('.index'))
-    
+    elif request.method == 'GET':
+        form.content.data = blog.blog
 
     return render_template('blog.html', form=form)
 
@@ -65,23 +65,15 @@ def new_comment(id):
     form = CommentsForm()
     if form.validate_on_submit():
         comment=form.comment.data
+        print(comment)
         new_comment = Comment(user=current_user, comment = comment)
         new_comment.save_comment()
         return redirect(url_for('main.index'))
     comments = Comment.get_comments(id)
     print(comments)
-    comm=Comment.query.filter_by(id = id)
-    
+    comm=Comment.query.filter_by(id = id).all()
+    print(comm)
     return render_template('new_comment.html',comment_form=form,comm = comm)
-
-# @main.route('/view/comment/<int:id>')
-# def view_comments(id):
-#     '''
-#     Function that returs  the comments belonging to a particular quote
-#     '''
-#     comments = Comment.get_comments(id)
-#     print(comments)
-#     return render_template('view_comments.html',comments = comments, id=id)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
@@ -122,12 +114,11 @@ def update_profile(uname):
     
     return render_template('profile/update.html',form =form)
 
-@main.route('/index/<int:id>/delete', methods = ['GET','POST'])
+@main.route('/index/<int:id>/delete', methods = ['GET','POST',])
 @login_required
 def delete(id):
-   current_post = Blog.query.filter_by(id = id).first()
-   if current_post.user != current_user:
-       abort(404)
+   current_post = Blog.query.get(id)
+   print(current_post)
    db.session.delete(current_post)
    db.session.commit()
    return redirect(url_for('main.index'))
@@ -141,7 +132,7 @@ def delete_comment(id):
    db.session.delete(current_post)
    db.session.commit()
    return redirect(url_for('.index'))
-   return render_template('comments.html',current_post = current_post)
+#    return render_template('comments.html',current_post = current_post)
 
 @main.route('/test/<int:id>')  
 def test(id):
